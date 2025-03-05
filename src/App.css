@@ -180,6 +180,7 @@ body {
   height: 8.5%;
   display: flex;
   transition: background-color var(--transition);
+  position: relative; /* For toast positioning */
 }
 
 .light-mode .color-codes { background: var(--panel-light); }
@@ -193,6 +194,40 @@ body {
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+}
+
+.color-code::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.color-code:hover::after {
+  width: 80%;
+  opacity: 0.7;
+}
+
+.light-mode .color-code:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .color-code:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.color-code:active {
+  transform: scale(0.97);
 }
 
 /* Responsive adjustments */

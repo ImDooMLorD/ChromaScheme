@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Toast from './Toast';
 
 const ColorCodes = ({ colors }) => {
-  const copyToClipboard = (text) => {
+  const [toast, setToast] = useState({ visible: false, text: '', color: '' });
+
+  const copyToClipboard = (text, color) => {
     navigator.clipboard.writeText(text)
-      .catch(err => console.error('Failed to copy color: ', err));
+      .then(() => {
+        // Show success toast
+        setToast({
+          visible: true,
+          text: `${text} copied!`,
+          color: color
+        });
+        
+        // Hide toast after 2 seconds
+        setTimeout(() => {
+          setToast({ visible: false, text: '', color: '' });
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy color: ', err);
+        setToast({
+          visible: true,
+          text: 'Failed to copy',
+          color: ''
+        });
+        
+        setTimeout(() => {
+          setToast({ visible: false, text: '', color: '' });
+        }, 2000);
+      });
   };
 
   return (
@@ -12,12 +39,16 @@ const ColorCodes = ({ colors }) => {
         <div 
           key={index} 
           className="color-code"
-          onClick={() => copyToClipboard(color)}
-          title={`Click to copy ${color}`}
+          onClick={() => copyToClipboard(color, color)}
+          title="Click to copy"
         >
           {color}
         </div>
       ))}
+      
+      {toast.visible && (
+        <Toast text={toast.text} color={toast.color} />
+      )}
     </footer>
   );
 };

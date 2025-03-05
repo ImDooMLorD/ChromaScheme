@@ -1,13 +1,48 @@
-# React + Vite
+# ChromaScheme
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application that generates harmonious color schemes based on a selected seed color and color theory rules.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Generate color schemes including monochrome, complementary, triad and more
+- Interactive color picker for selecting seed colors
+- Responsive design for desktop, tablet, and mobile devices
+- Dark/Light mode toggle
+- Copy color hex codes with one click
+- Powered by The Color API
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Color-Scheme-Generator
+- React.js
+- CSS3 with custom properties
+- Vite
+
+## How to Use
+
+1. **Select a Seed Color**: Use the color picker to choose your base color
+2. **Choose a Scheme**: Select from various color theory models
+3. **Generate**: Click "Generate" to create your palette
+4. **Copy Colors**: Click any hex code to copy it to clipboard
+5. **Change Theme**: Use the theme toggle to switch between light and dark mode
+
+## Development
+
+To run the project locally:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ChromaScheme.git
+   cd ChromaScheme
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`

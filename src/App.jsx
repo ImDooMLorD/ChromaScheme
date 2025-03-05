@@ -54,7 +54,7 @@ function App() {
     fetchColors();
     
     return () => window.removeEventListener('resize', setViewportHeight);
-  }, []);
+  }, [fetchColors]);
 
   // Apply theme changes
   useEffect(() => {
