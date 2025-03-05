@@ -21,10 +21,11 @@ function App() {
   const [colors, setColors] = useState(Array(5).fill("#ffffff"));
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const fetchColors = useCallback(async () => {
+  // Modified fetchColors to not depend on state variables directly
+  const fetchColors = useCallback(async (color = seedColor, scheme = colorScheme) => {
     try {
-      const hex = seedColor.replace("#", "");
-      const url = `https://www.thecolorapi.com/scheme?hex=${hex}&mode=${colorScheme}&count=5`;
+      const hex = color.replace("#", "");
+      const url = `https://www.thecolorapi.com/scheme?hex=${hex}&mode=${scheme}&count=5`;
       const response = await fetch(url);
       
       if (!response.ok) throw new Error('API request failed');
@@ -34,7 +35,7 @@ function App() {
     } catch (error) {
       console.error("Failed to fetch colors:", error);
     }
-  }, [seedColor, colorScheme]);
+  }, []); // No dependencies, won't recreate when state changes
 
   // Initialize app
   useEffect(() => {
@@ -51,7 +52,7 @@ function App() {
     window.addEventListener('resize', setViewportHeight);
     
     // Initial color fetch
-    fetchColors();
+    fetchColors(seedColor, colorScheme);
     
     return () => window.removeEventListener('resize', setViewportHeight);
   }, [fetchColors]);
@@ -64,6 +65,11 @@ function App() {
 
   const toggleTheme = useCallback(() => setIsDarkMode(prev => !prev), []);
 
+  // Create a handler that can be passed to Controls
+  const handleGenerateColors = () => {
+    fetchColors(seedColor, colorScheme);
+  };
+
   return (
     <>
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
@@ -74,7 +80,7 @@ function App() {
             setSeedColor={setSeedColor}
             colorScheme={colorScheme}
             setColorScheme={setColorScheme}
-            fetchColors={fetchColors}
+            fetchColors={handleGenerateColors}
             colorOptions={COLOR_MODES}
           />
           <ColorPalette colors={colors} />
