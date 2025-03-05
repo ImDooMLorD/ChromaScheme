@@ -1,0 +1,343 @@
+/* Base header styles - DEFAULT (centered) */
+.app-header {
+  max-width: 100%;
+  text-align: center;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.04em; /* Slightly reduced letter spacing */
+  text-align: center;
+  line-height: 1.2; /* Add line height to ensure proper display */
+  max-width: 100%; /* Ensure it doesn't overflow */
+  overflow-wrap: break-word; /* Allow breaking if needed */
+}
+
+.app-description {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  font-weight: 300;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+}
+
+/* Instructions layout - clean up and optimize */
+.instructions {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 0 auto;
+  overflow: visible;
+  padding: 0 5px;
+  width: auto;
+  max-width: 100%;
+}
+
+.instruction-step {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Smaller gap between number and text */
+  flex: 0 0 auto; /* Don't grow or shrink */
+  white-space: nowrap;
+}
+
+/* Make step numbers smaller */
+.step-number {
+  width: 1.3rem; 
+  height: 1.3rem;
+  font-size: 0.8rem;
+  background-color: transparent; 
+  color: var(--text-primary);
+  border: none; /* Remove border */
+  border-radius: 50%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-mode .step-number {
+  color: var(--text-primary); /* Use primary text color */
+}
+
+.step-text {
+  font-size: 0.8rem;
+  white-space: nowrap; /* Keep text on a single line */
+}
+
+/* ===== REVISED STANDARDIZED MEDIA QUERIES ===== */
+
+/* SPECIAL CASE: ULTRAWIDE */
+@media (min-aspect-ratio: 2.5/1) {
+  .app-header {
+    text-align: left;
+    padding: 0.5rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.8rem; /* Slightly smaller */
+    margin-bottom: 0.5rem;
+    text-align: left;
+    letter-spacing: 0.02em; /* Further reduce letter spacing */
+    white-space: normal; /* Allow wrapping if needed */
+    max-width: 100%; /* Take full width */
+  }
+  
+  .app-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+  
+  /* Override vertical layout for ultrawide screens */
+  .instructions {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    max-width: 100%;
+  }
+  
+  .instruction-step {
+    flex: 0 1 auto;
+    min-width: 100px;
+  }
+  
+  .step-text {
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}
+
+/* NORMAL: 801px - 1024px */
+@media (min-width: 801px) and (max-width: 1024px) {
+  .app-header {
+    text-align: center;
+  }
+  
+  .app-header h1 {
+    text-align: center;
+  }
+  
+  .app-description {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+  }
+  
+  .instructions {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .step-text {
+    font-size: 0.75rem;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+}
+
+/* TABLET: 600px - 800px */
+@media (min-width: 600px) and (max-width: 800px) {
+  .app-header {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .app-description {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Override vertical instructions */
+  .instructions {
+    max-width: fit-content;
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* MOBILE: 500px - 599px */
+@media (min-width: 500px) and (max-width: 599px) {
+  .app-header {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  
+  .app-header h1 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  
+  .app-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+  
+  /* Make sure instructions stay horizontal */
+  .instructions {
+    max-width: fit-content;
+    justify-content: center;
+  }
+  
+  .instruction-step {
+    min-width: 90px; /* Smaller min-width */
+    max-width: 120px;
+  }
+  
+  .step-number {
+    width: 1.4rem;
+    height: 1.4rem;
+    font-size: 0.8rem;
+  }
+  
+  .step-text {
+    font-size: 0.75rem; /* Smaller font */
+  }
+}
+
+/* MOBILE SMALL: < 500px */
+@media (max-width: 499px) {
+  .instructions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    justify-content: space-around;
+  }
+  
+  .instruction-step {
+    min-width: 80px;
+    flex: 1 1 40%;
+    margin-bottom: 5px;
+  }
+}
+
+/* 
+  Special Media Query: When screen height is too small for stacked layout,
+  match the side-by-side layout from App.css
+*/
+@media (max-height: 650px) and (min-width: 601px) {
+  .app-header {
+    text-align: left;
+    padding: 0.5rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.8rem; /* Slightly smaller */
+    margin-bottom: 0.5rem;
+    text-align: left;
+    letter-spacing: 0.02em; /* Further reduce letter spacing */
+    white-space: normal; /* Allow wrapping if needed */
+    max-width: 100%; /* Take full width */
+  }
+  
+  .app-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+  
+  /* Override vertical instructions */
+  .instructions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 100%;
+  }
+  
+  .step-text {
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}
+
+/* For side-by-side layouts - Original header size but keep number style */
+@media (min-aspect-ratio: 2.5/1),
+       (max-height: 650px) and (min-width: 601px)
+{
+  .app-header {
+    padding: 0 0 0.5rem 0;
+    width: 100%;
+  }
+  
+  .app-header h1 {
+    font-size: 1.8rem; /* Back to original size */
+    margin-bottom: 0.5rem;
+    text-align: left;
+    letter-spacing: 0.02em;
+    white-space: normal;
+  }
+  
+  .app-description {
+    font-size: 0.9rem; /* Back to original size */
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Keep instructions left-aligned but original size */
+  .instructions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-left: 10px;
+    padding-left: 0;
+  }
+  
+  /* Keep instruction step size original */
+  .instruction-step {
+    gap: 6px;
+  }
+  
+  /* Keep original number sizes but without background */
+  .step-number {
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: 0.8rem;
+  }
+
+  .step-text {
+    font-size: 0.8rem;
+  }
+}
+
+/*   Add specific style for needs-side-layout class */
+body.needs-side-layout .app-header .instructions {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  max-width: 100%;
+  margin-left: 10px;
+  padding-left: 0;
+}

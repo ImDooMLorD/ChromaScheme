@@ -11,6 +11,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Add missing primary color variable used by step numbers */
+  --primary-color: #8b5cf6; /* Purple color matching the gradient */
 }
 
 a {
