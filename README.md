@@ -25,6 +25,16 @@ A modern, responsive web application that generates harmonious color schemes bas
 4. **Copy Colors**: Click any hex code to copy it to clipboard
 5. **Change Theme**: Use the theme toggle to switch between light and dark mode
 
+## Screenshots
+
+### Light Mode
+| ![Light Mode 1](./screenshots/light1.jpg) | ![Light Mode 2](./screenshots/light2.jpg) |
+|:-----------------------------------------:|:-----------------------------------------:|
+
+### Dark Mode
+| ![Dark Mode 1](./screenshots/dark1.jpg) | ![Dark Mode 2](./screenshots/dark2.jpg) |
+|:----------------------------------------:|:----------------------------------------:|
+
 ## Development
 
 To run the project locally:
